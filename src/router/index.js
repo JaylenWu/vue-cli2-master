@@ -15,10 +15,10 @@ export default new Router({
       name: 'ExcelImport',
       component: () => import('@/view/excel-import/index.vue')
     },
-    {
-      path: '/upload-demo',
-      name: 'UploadDemo',
-      component: () => import('@/view/upload-demo/index.vue')
-    }
+    // {
+    //   path: '/upload-demo',
+    //   name: 'UploadDemo',
+    //   component: () => import('@/view/upload-demo/index.vue')
+    // }
   ]
 })
