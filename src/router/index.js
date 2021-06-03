@@ -7,8 +7,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'ExcelImport',
-      component: () => import('@/view/upload-demo/index.vue')
+      component: () => import('@/view/excel-import/index.vue')
     },
     {
       path: '/excel-import',

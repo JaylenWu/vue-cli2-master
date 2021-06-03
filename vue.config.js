@@ -8,10 +8,13 @@ module.exports = {
     productionSourceMap: true, // source map， 设为false可以加快构建速度
     devServer: {
         proxy: {
-            '/api': {
-                target: '<url>',
-                ws: true,
-                changeOrigin: true
+            '/ht': {
+                target: 'https://api-stg.jushipinlei.com/daishu-api',
+                // ws: true,
+                changeOrigin: true,
+                // pathRewrite:{
+                //     '^/ht':''
+                // }
             },
         }, // 是一个指向开发环境 API 服务器的字符串
     }

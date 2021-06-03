@@ -65,13 +65,17 @@
       <input type="file" @change="handleImport" @drop="handleDrop" />
       <input type="button" value="下载" @click="handleDownLoad" />
     </div>
+    <div class="d-flex mt-20">
+      <input type="button" value="发起请求" @click="getList" />
+    </div>
   </div>
 </template>
 
 <script>
 import XLSX from "xlsx";
 import Table from "@/components/table";
-import { export_array_to_excel } from "@/utils/excel.js";
+// import { export_array_to_excel } from "@/utils/excel.js";
+import { getCouponList } from "@/api/demo.js";
 export default {
   name: "ExcelImport",
   components: {
@@ -80,10 +84,19 @@ export default {
   data() {
     return {};
   },
+  // created() {
+  //   this.getList();
+  // },
   methods: {
+    async getList() {
+      const data = await getCouponList(1, 10, {
+        communityId: "cc0d51ee-65ca-4951-9e4d-04ab4a4b6553",
+      });
+      // console.log(data);
+    },
 
     // 导出 XLSX.utils aoa_to_sheet json_to_sheet table_to_sheet sheet_add_aoa sheet_add_json
-    // 导入 XLSX.utils sheet_to_json sheet_to_csv sheet_to_txt sheet_to_html sheet_to_formulae 
+    // 导入 XLSX.utils sheet_to_json sheet_to_csv sheet_to_txt sheet_to_html sheet_to_formulae
     // 读取excel: XLSX.read(data, read_opts) XLSX.readFile(filename, read_opts)
     // 生成excel: XLSX.write(wb, write_opts) XLSX.writeFile(wb, filename, write_opts) XLSX.writeFileAsync(filename, wb, o, cb)
     // read_opts: {type: typeOps, ...}
@@ -153,8 +166,8 @@ export default {
       // const dataCsv = XLSX.utils.sheet_to_csv(ws1); // sheet_to_csv
       // console.log(dataCsv);
       // 将表格导出成excel
-      const ws = XLSX.utils.aoa_to_sheet([data]);   
-      XLSX.utils.book_append_sheet(workbook, ws, "导出表格"); 
+      const ws = XLSX.utils.aoa_to_sheet([data]);
+      XLSX.utils.book_append_sheet(workbook, ws, "导出表格");
       XLSX.writeFile(workbook, "导出表格.xlsx");
     },
   },
