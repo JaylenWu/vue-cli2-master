@@ -15,7 +15,7 @@
           <div class="icon-wrapper">
             <span
               class="drag-icon el-icon-zoom-in mr-10"
-              @click="handlePreview(item, index)"
+              @click="handlePreview(item)"
             ></span>
             <span class="drag-icon el-icon-rank mr-10"></span>
             <span
@@ -187,7 +187,7 @@ export default {
       }
     },
     // 预览
-    handlePreview(item, index) {
+    handlePreview(item) {
       this.preview = {
         isOpened: true,
         url: item.url,
@@ -269,5 +269,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "./index.scss";
+@import "@/components/BaseUpload/index.scss";
 </style>
